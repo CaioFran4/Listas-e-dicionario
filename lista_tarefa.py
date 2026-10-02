@@ -4,7 +4,7 @@
 # 2 - Mostrar as tarefas concluidas
 # 3 - Mostrar as tarefas não concluidas
 # 4 - Mostrar as tarefas por Prioridades
-# 5 - Mostrar tarefa nova
+# 5 - Cadastrar tarefa nova
 # 6 - Finalizar tarefas
 # 7 - Remover tarefas
 # 0 - sair
@@ -48,16 +48,26 @@ def cadastrar():
         print(lista_tarefas)
 
 def re_tarefa():
-    remove_tarefa = str(input("Digite o Nome da Tarefa que você deseja remover: "))
+    remove_tarefa = str(input("Digite a Tarefa que você deseja remover: "))
+    tarefa_encontrada = False
 
     for tarefa in lista_tarefas:
-        if tarefa["titulo"] == 
+        if tarefa ["titulo"].lower() == remove_tarefa.lower():
+            lista_tarefas.remove(tarefa)
+            print(f"A tarefa '{tarefa['titulo']}'foi removida")
+            tarefa_encontrada = True
 
+
+def finalizar():
+    finalizar_tarefa = input("Qual Tarefa você gostaria de finalizar?: ")    
+    
     for tarefa in lista_tarefas:
-        if tarefa ["titulo"] == remove_tarefa:
-            lista_tarefas.remove(remove_tarefa)
-            
+        if tarefa["titulo"].lower() == finalizar_tarefa.lower():
+            tarefa["Concluida"] = "SIM"
+            print(f"A Tarefa '{tarefa['titulo']}'foi concluida")
         
+
+
 
 
 
@@ -88,6 +98,9 @@ while True:
 
     elif opcao == "5":
         cadastrar()
+    
+    elif opcao == "6":
+        finalizar()
 
     elif opcao == "7":
         re_tarefa()
